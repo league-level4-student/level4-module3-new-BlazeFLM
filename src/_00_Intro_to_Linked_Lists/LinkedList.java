@@ -9,6 +9,7 @@ public class LinkedList<T> {
      * These must be updated if elements are headed to the front or back, but
      * allow for easy entry points into the LinkedList.
      */
+	
     private Node<T> head;
     private Node<T> tail;
 
@@ -25,7 +26,7 @@ public class LinkedList<T> {
                 prev = prev.getNext();
                 next = next.getNext();
             }
-
+            
             next = new Node<T>(value);
             prev.setNext(next);
             next.setPrev(prev);

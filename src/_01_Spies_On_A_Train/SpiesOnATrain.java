@@ -1,5 +1,6 @@
 package _01_Spies_On_A_Train;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import _00_Intro_to_Linked_Lists.LinkedList;
@@ -23,8 +24,30 @@ public class SpiesOnATrain {
      */
     String findIntel(LinkedList<TrainCar> train, String[] clues) {
 
+    	Node<TrainCar> n = train.getHead();
+    	//The pattern is, it will keep going to a person, then eventually bouncing back and forth between two. The last person found between those two is the spy.
+    	//EX Froy - Cate - Kelly - Froy - Kelly - Froy (infinite), here, the spy will be Kelly
+    	
+    	ArrayList<String> spokenTo = new ArrayList<String>();
+    	while(n != null) {
+    		String question = n.getValue().questionPassenger();
+    		System.out.println(question);
+    		
+    		if (question.contains("My name is")) {
+    	        int startIndex = question.indexOf("My name is") + 11; 
+    	        int endIndex = question.indexOf('.', startIndex);
+    	        if (endIndex != -1) {
+    	            String name = question.substring(startIndex, endIndex).trim();
+    	            spokenTo.add(name);
+    	        }
+    	    }
+    		
+    		n = n.getNext();
+    	}
+    	
+    	
+    	
         return "";
-
     }
 
 }
